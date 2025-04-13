@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User
+from .models import User, Message
 from django.contrib.auth.password_validation import validate_password
 from rest_framework_simplejwt.tokens import RefreshToken
 
@@ -52,3 +52,9 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'profile_pic']
+
+
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = ['id', 'sender', 'receiver', 'content', 'attachment', 'timestamp', 'session_id']
